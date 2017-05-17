@@ -1,10 +1,18 @@
 package Dashboard;
 
+import java.io.File;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
+import Casesrun.Homepagetable;
 import POM.Homepage;
 import POM.Login;
 import atu.testrecorder.ATUTestRecorder;
@@ -14,7 +22,7 @@ public class Pendingcases
 {
 	ATUTestRecorder recorder;
 	@Test
-	public void user() throws InterruptedException, ATUTestRecorderException
+	public void user() throws InterruptedException, ATUTestRecorderException, IOException
 	{
 		System.setProperty("webdriver.chrome.driver","/home/aj/Downloads/chromedriver"); 
 		WebDriver driver=new ChromeDriver();
@@ -31,16 +39,30 @@ public class Pendingcases
 		
 		
 		Login.loginbutton(driver).click();
-		System.out.println("click login button successfully");
+		System.out.println("Login  successfully");
 		
 		Thread.sleep(3000);
 		System.out.println("pending cases = "+driver.findElement(By.xpath("/html/body/app-root/app-navbar/div[2]/div/div[2]/main/app-dashboard/div[2]/div[4]/div/div[2]/h1")).getText());
 
-		
 		pageelement.Pendingcases(driver).click();
 		
+		Thread.sleep(3000);
 		String url=driver.getCurrentUrl();
 		System.out.println("pending cases"+url);
+		
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+		jse.executeScript("window.scrollBy(0,250)", "");
+		
+		Homepagetable.Lastpagearrowbutton(driver).click();
+		Thread.sleep(3000);
+		File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);                    
+		FileUtils.copyFile(scrFile, new File("/home/aj/screenshot/pending cases lastpage.png"));
+		
+		System.out.println("check the screen shot for Pending cases ");
+		
+		
 		Homepage.Logoutbutton(driver).click();
+		driver.quit();
+		
 	}
 }

@@ -4,11 +4,13 @@ import java.io.IOException;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
+import Dashboard.pageelement;
 import POM.Cases;
 import POM.Homepage;
 import POM.Login;
@@ -59,7 +61,7 @@ public class searchbyname {
 
 			}
 			
-			driver.findElement(By.cssSelector("[placeholder='Search']")).sendKeys("Nikhil");
+			pageelement.searchbyname(driver).sendKeys("Nikhil");
 			List<WebElement>rows=driver.findElements(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr)"));
 			System.out.println("Total no of rows="+rows.size());
 			
@@ -86,8 +88,24 @@ public class searchbyname {
 				System.out.println("\n");
 			}
 			}
+
+			JavascriptExecutor jse = (JavascriptExecutor)driver;
+			jse.executeScript("window.scrollBy(0,250)", "");
 		
-driver.quit();
+			
+			WebElement arrow=driver.findElement(By.xpath("(//span[@class='fa fa-forward'])"));
+			
+			if(arrow.isEnabled())
+			{
+				
+				System.out.println("Arrow button is  Enable");
+				driver.findElement(By.xpath("(//span[@class='fa fa-forward'])")).click();
+			}
+			else
+			{
+				System.out.println("Arrow button is disable");
+			}
+//driver.quit();
 }
 }
 

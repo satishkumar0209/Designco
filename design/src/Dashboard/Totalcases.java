@@ -1,9 +1,16 @@
 package Dashboard;
 
+import static org.testng.Assert.assertEquals;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,13 +21,14 @@ import POM.Homepage;
 import POM.Login;
 import atu.testrecorder.ATUTestRecorder;
 import atu.testrecorder.exceptions.ATUTestRecorderException;
+import junit.framework.Assert;
 
 public class Totalcases 
 
 {
 	ATUTestRecorder recorder;
 	@Test
-	public void user() throws InterruptedException, ATUTestRecorderException
+	public void user() throws InterruptedException, ATUTestRecorderException, IOException
 	{
 		System.setProperty("webdriver.chrome.driver","/home/aj/Downloads/chromedriver"); 
 		WebDriver driver=new ChromeDriver();
@@ -37,24 +45,26 @@ public class Totalcases
 		
 		
 		Login.loginbutton(driver).click();
-		System.out.println("click login button successfully");
+		System.out.println("click login  successfully");
 		
 		Thread.sleep(9000);
 		
 		
 		
-		System.out.println("Total cases "+driver.findElement(By.xpath("/html/body/app-root/app-navbar/div[2]/div/div[2]/main/app-dashboard/div[2]/div[2]/div/div[2]")).getText());
+		System.out.println("Total cases=  "+driver.findElement(By.xpath("/html/body/app-root/app-navbar/div[2]/div/div[2]/main/app-dashboard/div[2]/div[2]/div/div[2]")).getText());
 		//System.out.println("Total cases = "+driver.findElement(By.xpath("//*[@class='ui-g-7 ui-lg-7 ui-md-7'])[2]")).getText());
 		
 		pageelement.Totalcaseslink(driver).click();
+		Thread.sleep(3000);
+		
+		String url=driver.getCurrentUrl();
+		System.out.println("Total cases url="+url);
+	
+		Assert.assertEquals("http://designco.sia.co.in/cases?case=all",url);
 		
 		Thread.sleep(3000);
 		
-		List<WebElement>rows=driver.findElements(By.xpath("(//tbody[@class ='ui-datatable-data ui-widget-content']/tr)"));
-		System.out.println("Total no of rows="+rows.size());
-		
-		List<WebElement>cols=driver.findElements(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr[1]/td)"));
-		System.out.println("Total no of columns="+cols.size());
+	
 		
 		
 		JavascriptExecutor jse = (JavascriptExecutor)driver;
@@ -62,12 +72,16 @@ public class Totalcases
 		
 		Homepagetable.Lastpagearrowbutton(driver).click();
 		
-		String url=driver.getCurrentUrl();
-		System.out.println("Total cases"+url);
+		Thread.sleep(3000);
+		File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);                    
+		FileUtils.copyFile(scrFile, new File("/home/aj/screenshot/Total cases last page.png"));
+		
+		System.out.println("check the screen shot for Total cases ");
 		
 		Homepage.Logoutbutton(driver).click();
 		
 		
+		driver.quit();
 		
 									
 		

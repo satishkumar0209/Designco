@@ -9,6 +9,7 @@ public class Homepagetable
 public static WebElement Tablerow(WebDriver driver)
 {
 	return driver.findElement(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr)"));
+	       //driver.findElements(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr)"));
 	
 }
 public static WebElement arrowbutton(WebDriver driver)
@@ -19,6 +20,11 @@ public static WebElement arrowbutton(WebDriver driver)
 
 
 public static WebElement Lastpagearrowbutton(WebDriver driver)
+{
+	return driver.findElement(By.xpath("(//span[@class='fa fa-step-forward'])"));
+	
+}
+public static WebElement tablerowcount(WebDriver driver)
 {
 	return driver.findElement(By.xpath("(//span[@class='fa fa-step-forward'])"));
 	

@@ -1,0 +1,9 @@
+<suite name="example suite 1" verbose="1" >
+  <test name="Regression suite 1" >
+    <classes>
+      <class name="Dashboard.Totalcases"/>
+      <class name="Dashboard.Pendingcases"/>
+      <class name="Dashboard.Reviewedcases"/>
+    </classes>
+ </test>
+</suite>

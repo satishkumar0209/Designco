@@ -121,8 +121,27 @@ ATUTestRecorder recorder;
 		
 		List<WebElement>cols7=driver.findElements(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr[1]/td)"));
 		System.out.println("Total no of columns="+cols7.size());
-		
-		
+		WebElement arrow=driver.findElement(By.xpath("(//span[@class='fa fa-forward'])"));
+		if(arrow.isEnabled())
+		{
+			
+			System.out.println("Arrow button is  Enable");
+			Homepagetable.arrowbutton(driver).click();
+		}
+		else
+		{
+			System.out.println("Arrow button is disable");
+		}
+		if(arrow.isEnabled())
+		{
+			
+			System.out.println("Arrow button is  Enable");
+			Homepagetable.arrowbutton(driver).click();
+		}
+		else
+		{
+			System.out.println("Arrow button is disable");
+		}
 		
 		Thread.sleep(6000);
 		recorder.stop();

@@ -39,5 +39,6 @@
 	<classpathentry kind="lib" path="/home/aj/Downloads/ATUTestRecorder_2.1.jar"/>
 	<classpathentry kind="lib" path="/home/aj/Downloads/poi-3.9.jar.zip"/>
 	<classpathentry kind="lib" path="/home/aj/Pictures/poi-3.9.jar"/>
+	<classpathentry kind="lib" path="/home/aj/Music/rest-assured-3.0.3-dist/rest-assured-3.0.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
