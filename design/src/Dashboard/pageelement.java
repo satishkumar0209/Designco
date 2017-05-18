@@ -20,6 +20,10 @@ public static WebElement Pendingcases(WebDriver driver)
 {
 	return driver.findElement(By.xpath("//*[text()='Pending Cases']"));
 }
+public static WebElement Reviewedcases(WebDriver driver)
+{
+	return driver.findElement(By.xpath("//*[text()='Reviewed Cases']"));
+}
 public static WebElement searchbyname(WebDriver driver)
 {
 	return driver.findElement(By.cssSelector("[placeholder='Search']"));

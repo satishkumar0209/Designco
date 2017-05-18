@@ -51,6 +51,10 @@ public static WebElement Fromdate(WebDriver driver)
 	return driver.findElement(By.xpath("//span[contains(@class,'ui-calendar ui-calendar-w-btn')]"));
 }
 	
+public static WebElement Todate(WebDriver driver)
+{
+	return driver.findElement(By.cssSelector("[placeholder='To']"));
+}
 	
 	
 

@@ -61,10 +61,12 @@ public class Dates
 
 			}
 			Cases.Fromdate(driver).click();
-			driver.findElement(By.xpath("//span[contains(@class,'ui-calendar ui-calendar-w-btn')]")).click();
+			
+			
 			Thread.sleep(3000);
 			driver.findElement(By.linkText("3")).click();
 			Thread.sleep(3000);
+			
 			driver.findElement(By.cssSelector("[placeholder='To']")).click();
 			driver.findElement(By.linkText("4")).click();
 			//driver.findElement(By.xpath("//a[@href='#']")).click();

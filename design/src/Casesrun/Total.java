@@ -65,83 +65,41 @@ ATUTestRecorder recorder;
 
 		}
 		
+		int count= 0;
 		List<WebElement>rows=driver.findElements(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr)"));
-		System.out.println("Total no of rows page1="+rows.size());
-		
+		System.out.println("Total no of rows page1="+rows.size());	
 		List<WebElement>cols=driver.findElements(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr[1]/td)"));
 		System.out.println("Total no of columns="+cols.size());
 		
 		JavascriptExecutor jse = (JavascriptExecutor)driver;
 		jse.executeScript("window.scrollBy(0,250)", "");
 		
-		
-									
-		
-		
-		Homepagetable.arrowbutton(driver).click();
-		List<WebElement>rows1=driver.findElements(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr)"));
-		System.out.println("Total no of rows page2="+rows1.size());
-		
-		List<WebElement>cols1=driver.findElements(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr[1]/td)"));
-		System.out.println("Total no of columns="+cols1.size());
-		
-		Homepagetable.arrowbutton(driver).click();
-		List<WebElement>rows2=driver.findElements(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr)"));
-		System.out.println("Total no of rows page 3="+rows2.size());
-		
-		List<WebElement>cols2=driver.findElements(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr[1]/td)"));
-		System.out.println("Total no of columns="+cols2.size());
-		Homepagetable.arrowbutton(driver).click();
-		List<WebElement>rows3=driver.findElements(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr)"));
-		System.out.println("Total no of rows page 4="+rows3.size());
-		
-		List<WebElement>cols3=driver.findElements(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr[1]/td)"));
-		System.out.println("Total no of columns="+cols3.size());
-		Homepagetable.arrowbutton(driver).click();
-		List<WebElement>rows4=driver.findElements(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr)"));
-		System.out.println("Total no of rows page 5="+rows4.size());
-		
-		List<WebElement>cols4=driver.findElements(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr[1]/td)"));
-		System.out.println("Total no of columns="+cols4.size());
-		Homepagetable.arrowbutton(driver).click();
-		List<WebElement>rows5=driver.findElements(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr)"));
-		System.out.println("Total no of rows page 6="+rows5.size());
-		
-		List<WebElement>cols5=driver.findElements(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr[1]/td)"));
-		System.out.println("Total no of columns="+cols5.size());
-		Homepagetable.arrowbutton(driver).click();
-		List<WebElement>rows6=driver.findElements(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr)"));
-		System.out.println("Total no of rows page 7="+rows6.size());
-		
-		List<WebElement>cols6=driver.findElements(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr[1]/td)"));
-		System.out.println("Total no of columns="+cols6.size());
-		Homepagetable.arrowbutton(driver).click();
-		List<WebElement>rows7=driver.findElements(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr)"));
-		System.out.println("Total no of rows page 8="+rows7.size());
-		
-		List<WebElement>cols7=driver.findElements(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr[1]/td)"));
-		System.out.println("Total no of columns="+cols7.size());
-		WebElement arrow=driver.findElement(By.xpath("(//span[@class='fa fa-forward'])"));
-		if(arrow.isEnabled())
-		{
-			
-			System.out.println("Arrow button is  Enable");
+		int input=0;
+		int required=0;
+		boolean start= true;
+		do
+		{	
 			Homepagetable.arrowbutton(driver).click();
-		}
-		else
-		{
-			System.out.println("Arrow button is disable");
-		}
-		if(arrow.isEnabled())
-		{
+			List<WebElement>rows8=driver.findElements(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr)"));
+			System.out.println("Total no of Rows="+rows8.size());
+			input= rows8.size();
 			
-			System.out.println("Arrow button is  Enable");
-			Homepagetable.arrowbutton(driver).click();
+			if (start)
+			{
+				required= rows8.size();
+				start= false;
+				//System.out.println("inside first time");
+			}
+				
+			List<WebElement>cols8=driver.findElements(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr[1]/td)"));
+			System.out.println("Total no of columns="+cols8.size());
+			
+			//System.out.println("page-->"+(input)+required);
+			count += input;
 		}
-		else
-		{
-			System.out.println("Arrow button is disable");
-		}
+		while(input>=required);
+		System.out.println("Total Cases are-->"+count);
+		
 		
 		Thread.sleep(6000);
 		recorder.stop();

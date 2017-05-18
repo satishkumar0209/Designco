@@ -1,5 +1,9 @@
 package Reviewedcases;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -18,7 +22,7 @@ public class Regulatoryenvironment
 {
 	ATUTestRecorder recorder;
 	@Test
-	public void user() throws InterruptedException, ATUTestRecorderException
+	public void user() throws InterruptedException, ATUTestRecorderException, FileNotFoundException
 	{
 		System.setProperty("webdriver.chrome.driver","/home/aj/Downloads/chromedriver"); 
 		WebDriver driver=new ChromeDriver();
@@ -61,19 +65,11 @@ public class Regulatoryenvironment
 		
 		String currenturl=driver.getCurrentUrl();
 		System.out.println("current url is:"+currenturl);
-		List<WebElement> lang1=LangSection.findElements(By.tagName("a"));
-
-		for(int i=0; i< lang1.size(); i++)
-
-		{
-
-		System.out.println(lang1.get(i).getText());
-
-		}
+		
 		
 		Cases.Choosesearchoption(driver).click();
 		
-		Cases.Searchinputfield(driver).sendKeys("Regulatoryenv");
+		Cases.Searchinputfield(driver).sendKeys("Regulatory");
 		
 		Cases.ENERGYUSECHECKBOX(driver).click();
 		
@@ -87,6 +83,10 @@ public class Regulatoryenvironment
 		List<WebElement>cols=driver.findElements(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr[1]/td)"));
 		System.out.println("Total no of columns="+cols.size());
 		
+        PrintStream printStream = new PrintStream(new FileOutputStream(new File("/home/aj/Desktop/text.xlsx")));
+        System.setOut(printStream);
+       
+		
 		for (int r=1;r<=rows.size();r++)
 		{
 			for(int c=1;c<=cols.size();c++)
@@ -94,10 +94,12 @@ public class Regulatoryenvironment
 		{
 		try
 		{
-			Thread.sleep(4000);
-			driver.findElement(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr)["+r+"]/td["+c+"]/span"));
+		 
+		Thread.sleep(4000);	
 		System.out.println(driver.findElement(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr)["+r+"]/td["+c+"]/span")).getText()+"");
-		}
+		
+        }
+      
 		catch(Exception e)
 		{
 			
@@ -106,7 +108,9 @@ public class Regulatoryenvironment
 			System.out.println("\n");
 		}
 		}
-	driver.quit();
+		
+        
+	//driver.quit();
 	recorder.stop();
 	
 	}

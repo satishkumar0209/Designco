@@ -1,9 +1,14 @@
 package Casesrun;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -17,7 +22,7 @@ public class Totalcasecount
 {
 	ATUTestRecorder recorder;
 	@Test
-	public void user() throws InterruptedException, ATUTestRecorderException
+	public void user() throws InterruptedException, ATUTestRecorderException, IOException
 	{
 		System.setProperty("webdriver.chrome.driver","/home/aj/Downloads/chromedriver"); 
 		WebDriver driver=new ChromeDriver();
@@ -47,16 +52,19 @@ public class Totalcasecount
 		Homepagetable.Lastpagearrowbutton(driver).click();
 		
 		WebElement LangSection=driver.findElement(By.xpath("(//span[@class='ui-paginator-pages'])"));
-		List<WebElement> lang=LangSection.findElements(By.tagName("href=#"));
+		List<WebElement> arrowdiv=LangSection.findElements(By.tagName("href=#"));
 
-		for(int i=0; i< lang.size(); i++)
+		for(int i=0; i< arrowdiv.size(); i++)
 
 		{
 
-		System.out.println(lang.get(i).getText());
+		System.out.println(arrowdiv.get(i).getText());
 
 		}
+		File snapshot=((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(snapshot, new File("D:\\screenshot.png"));
 		
+		System.out.println("check the image in screen shot");
 		recorder.stop();
 		
 		driver.quit();

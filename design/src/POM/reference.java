@@ -21,9 +21,20 @@ public class reference {
 			driver.findElement(By.cssSelector("[placeholder='Password']")).sendKeys("password123");
 		driver.findElement(By.xpath(".//*[@type= 'submit']")).click();
 		
-		driver.findElement(By.xpath("/html/body/app-root/app-navbar/div[2]/div/div[2]/main/app-dashboard/div[2]/div[1]")).getAttribute("Total Citizens");
+		Thread.sleep(5000);
 		
 		
+		driver.get("http://designco.sia.co.in/cases/complete-detail/97");
+		Thread.sleep(5000);
+		
+		
+		System.out.println("cases="+driver.findElement(By.xpath("(//*[@class='ui-g'])")).getText());
+		System.out.println("cases="+driver.findElement(By.xpath("/html/body/app-root/app-navbar/div[2]/div/div[2]/main/app-cases/app-complete-detail/div[2]/div[2]/div/div/div[3]/div")).getText());
+		//WebElement checkbox=driver.findElement(By.xpath("//*[@class='ui-radiobutton-box ui-widget ui-state-default']"));
+		//driver.findElement(By.xpath("/html/body/app-root/app-navbar/div[2]/div/div[2]/main/app-dashboard/div[2]/div[1]")).getAttribute("Total Citizens");
+		Thread.sleep(5000);
+		
+		driver.findElement(By.xpath("/html/body/app-root/app-navbar/div[2]/div/div[2]/main/app-cases/app-complete-detail/div[2]/div[2]/div/div/div[3]/div")).click();
 		
 		
 		//driver.findElement(By.xpath("/html/body/app-root/app-navbar/div[2]/div/div[2]/main/app-dashboard/div[2]/div[1]/div/div[2]/h1")).getText();

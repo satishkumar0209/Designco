@@ -24,6 +24,7 @@ ATUTestRecorder recorder;
 	{
 		System.setProperty("webdriver.chrome.driver","/home/aj/Downloads/chromedriver"); 
 		WebDriver driver=new ChromeDriver();
+		driver.manage().deleteAllCookies();
 		recorder = new ATUTestRecorder("/home/aj/Documents/Selenium recording videos","Wateruse-",false);
 		recorder.start();
 		driver.get("http://designco.sia.co.in/");

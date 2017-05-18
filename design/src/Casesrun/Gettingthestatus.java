@@ -73,7 +73,7 @@ public class Gettingthestatus
 			driver.findElement(By.cssSelector("[placeholder='Reply']")).sendKeys("Case successfully reviewed");
 			Thread.sleep(2000);
 			driver.findElement(By.xpath("/html/body/app-root/app-navbar/div[2]/div/div[2]/main/app-cases/app-complete-detail/div[4]/p-dialog/div/div[2]/div[2]/div/button[1]/span")).click();
-			
+			System.out.println("Reply successfully");
 		}
 		
 		

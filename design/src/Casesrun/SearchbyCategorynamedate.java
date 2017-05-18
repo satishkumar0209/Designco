@@ -2,9 +2,9 @@ package Casesrun;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -17,7 +17,8 @@ import POM.Login;
 import atu.testrecorder.ATUTestRecorder;
 import atu.testrecorder.exceptions.ATUTestRecorderException;
 
-public class searchbyname {
+public class SearchbyCategorynamedate 
+{
 	private static WebDriver driver;
 	ATUTestRecorder recorder;
 		
@@ -27,7 +28,7 @@ public class searchbyname {
 		{
 			System.setProperty("webdriver.chrome.driver","/home/aj/Downloads/chromedriver"); 
 			WebDriver driver=new ChromeDriver();
-			recorder = new ATUTestRecorder("/home/aj/Documents/Selenium recording videos","Search-",false);
+			recorder = new ATUTestRecorder("/home/aj/Documents/Selenium recording videos","Communicationwithmanagement-",false);
 			recorder.start();
 			driver.get("http://designco.sia.co.in/");
 			driver.manage().window().maximize();
@@ -61,13 +62,29 @@ public class searchbyname {
 
 			}
 			
+			Cases.Choosesearchoption(driver).click();
+			driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
+			Cases.Searchinputfield(driver).sendKeys("others");
+			driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
+			Cases.ENERGYUSECHECKBOX(driver).click();
+			driver.findElement(By.xpath("//a[@href='#']")).click();
+			
+			Cases.Fromdate(driver).click();
+			driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
+			driver.findElement(By.linkText("15")).click();
+			driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
+			
+			driver.findElement(By.cssSelector("[placeholder='To']")).click();
+			driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
+			driver.findElement(By.linkText("15")).click();
+			
 			pageelement.searchbyname(driver).sendKeys("Nikhil");
+			
 			List<WebElement>rows=driver.findElements(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr)"));
 			System.out.println("Total no of rows="+rows.size());
 			
 			List<WebElement>cols=driver.findElements(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr[1]/td)"));
 			System.out.println("Total no of columns="+cols.size());
-			
 			
 			for (int r=1;r<=rows.size();r++)
 			{
@@ -88,27 +105,10 @@ public class searchbyname {
 				System.out.println("\n");
 			}
 			}
-
-			JavascriptExecutor jse = (JavascriptExecutor)driver;
-			jse.executeScript("window.scrollBy(0,250)", "");
+			
+			Thread.sleep(6000);
+			recorder.stop();
+			
 		
-			
-			WebElement arrow=driver.findElement(By.xpath("(//span[@class='fa fa-forward'])"));
-			
-			if(arrow.isSelected())
-			{
-				
-				System.out.println("Arrow button is  Enable");
-				driver.findElement(By.xpath("(//span[@class='fa fa-forward'])")).click();
-			}
-			else
-			{
-				System.out.println("Arrow button is disable");
-			}
-//driver.quit();
 }
 }
-
-
-
-
