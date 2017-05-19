@@ -1,0 +1,10 @@
+<suite name="example suite 1" verbose="1" >
+  <test name="Regression suite 1" >
+    <classes>
+    <class name="Loginrun.PageloadTime"/>
+      <class name="Loginrun.valid"/>
+      <class name="Loginrun.Invaliduser"/>
+      
+    </classes>
+ </test>
+</suite>
