@@ -32,9 +32,9 @@ public class reference {
 	
 		driver.findElement(By.cssSelector("[placeholder='Username']")).sendKeys("superadmin@gmail.com");
 		Scanner scan1 = new Scanner(System.in);
-		String input1 = scan1.nextLine();
+		String input1 = scan1.nextLine();s
 
-			driver.findElement(By.cssSelector("[placeholder='Password']")).sendKeys("password123");
+	//driver.findElement(By.cssSelector("[placeholder='Password']")).sendKeys("password123");
 		driver.findElement(By.xpath(".//*[@type= 'submit']")).click();
 		
 		Thread.sleep(8000);
