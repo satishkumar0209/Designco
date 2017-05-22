@@ -42,7 +42,7 @@ public class Pendingcases
 		System.out.println("Login  successfully");
 		
 		Thread.sleep(3000);
-		System.out.println("pending cases = "+driver.findElement(By.xpath("/html/body/app-root/app-navbar/div[2]/div/div[2]/main/app-dashboard/div[2]/div[4]/div/div[2]/h1")).getText());
+		System.out.println("pending cases = "+driver.findElement(By.xpath("(//*[@class='ui-g-7 ui-lg-7 ui-md-7'])[4]")).getText());
 
 		pageelement.Pendingcases(driver).click();
 		

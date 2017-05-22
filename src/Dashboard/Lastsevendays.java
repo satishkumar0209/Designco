@@ -41,19 +41,19 @@ public class Lastsevendays
 		driver.findElement(By.xpath("(//*[@class='ui-dropdown-item ui-corner-all'][3])")).click();
 		Thread.sleep(5000);
 		
-		WebElement one=driver.findElement(By.xpath("/html/body/app-root/app-navbar/div[2]/div/div[2]/main/app-dashboard/div[2]/div[2]/div/div[2]"));
+		WebElement one=driver.findElement(By.xpath("(//*[@class='ui-g-7 ui-lg-7 ui-md-7'])[2]"));
 		one.getText();
 		String st1=one.getText();
 				
 		System.out.println("Total cases ="+st1);
 		
-		WebElement two=driver.findElement(By.xpath("/html/body/app-root/app-navbar/div[2]/div/div[2]/main/app-dashboard/div[2]/div[3]/div/div[2]"));
+		WebElement two=driver.findElement(By.xpath("(//*[@class='ui-g-7 ui-lg-7 ui-md-7'])[3]"));
 		two.getText();
 		String st2=two.getText();
 		
 		
 		System.out.println("Reviewed cases ="+st2);
-		WebElement three=driver.findElement(By.xpath("/html/body/app-root/app-navbar/div[2]/div/div[2]/main/app-dashboard/div[2]/div[4]/div/div[2]"));
+		WebElement three=driver.findElement(By.xpath("(//*[@class='ui-g-7 ui-lg-7 ui-md-7'])[4]"));
 		three.getText();
 		String st3=three.getText();
 		System.out.println("Pending cases ="+st3);

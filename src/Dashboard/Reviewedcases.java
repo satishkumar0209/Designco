@@ -40,7 +40,7 @@ public class Reviewedcases
 		Login.loginbutton(driver).click();
 		System.out.println(" login  successfully");
 		Thread.sleep(3000);
-		System.out.println("Reviewed cases = "+driver.findElement(By.xpath("/html/body/app-root/app-navbar/div[2]/div/div[2]/main/app-dashboard/div[2]/div[3]/div/div[2]/h1")).getText());
+		System.out.println("Reviewed cases = "+driver.findElement(By.xpath("(//*[@class='ui-g-7 ui-lg-7 ui-md-7'])[3]")).getText());
 		pageelement.Reviewedcases(driver).click();
 		Thread.sleep(3000);
 		String url=driver.getCurrentUrl();
