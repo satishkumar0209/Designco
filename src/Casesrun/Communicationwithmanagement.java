@@ -7,6 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import POM.Cases;
@@ -20,17 +22,18 @@ public class Communicationwithmanagement
 	private static WebDriver driver;
 	ATUTestRecorder recorder;
 		
+	
+	@Test
+	public void user() throws InterruptedException, ATUTestRecorderException, IOException
+	{
+		System.setProperty("webdriver.chrome.driver","/home/aj/Downloads/chromedriver"); 
+		WebDriver driver=new ChromeDriver();
+		recorder = new ATUTestRecorder("/home/aj/Documents/Selenium recording videos","Energyuse-",false);
+		recorder.start();
+		driver.get("http://designco.sia.co.in/");
+		driver.manage().window().maximize();
 		
-		@Test
-		public void user() throws InterruptedException, ATUTestRecorderException, IOException
-		{
-			System.setProperty("webdriver.chrome.driver","/home/aj/Downloads/chromedriver"); 
-			WebDriver driver=new ChromeDriver();
-			recorder = new ATUTestRecorder("/home/aj/Documents/Selenium recording videos","Communicationwithmanagement-",false);
-			recorder.start();
-			driver.get("http://designco.sia.co.in/");
-			driver.manage().window().maximize();
-			
+		
 			Login.username(driver).sendKeys("superadmin@gmail.com");
 			System.out.println("Enter username successfully");
 			
@@ -62,14 +65,12 @@ public class Communicationwithmanagement
 			
 			Cases.Choosesearchoption(driver).click();
 			
-			Cases.Searchinputfield(driver).sendKeys("Communicationwithmanagement");
+			Cases.Searchinputfield(driver).sendKeys("Communication");
 			
 			Cases.ENERGYUSECHECKBOX(driver).click();
 			
-			
-			driver.findElement(By.xpath("//a[@href='#']")).click();
-			
-			
+			Homepagetable.CHECKBOX(driver).click();
+		
 			List<WebElement>rows=driver.findElements(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr)"));
 			System.out.println("Total no of rows="+rows.size());
 			
@@ -84,7 +85,7 @@ public class Communicationwithmanagement
 			try
 			{
 				Thread.sleep(4000);
-				driver.findElement(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr)["+r+"]/td["+c+"]/span"));
+			driver.findElement(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr)["+r+"]/td["+c+"]/span"));
 			System.out.println(driver.findElement(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr)["+r+"]/td["+c+"]/span")).getText()+"");
 			}
 			catch(Exception e)

@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
+import Casesrun.Homepagetable;
 import POM.Cases;
 import POM.Homepage;
 import POM.Login;
@@ -78,7 +79,7 @@ public class Environmentimpact
 		Cases.ENERGYUSECHECKBOX(driver).click();
 		
 		
-		driver.findElement(By.xpath("//a[@href='#']")).click();
+		Homepagetable.CHECKBOX(driver).click();
 		
 		
 		List<WebElement>rows=driver.findElements(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr)"));

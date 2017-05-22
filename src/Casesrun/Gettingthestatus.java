@@ -75,7 +75,7 @@ public class Gettingthestatus
 		driver.findElement(By.cssSelector("body > app-root > app-navbar > div.wrapper > div > div.right-wrap.zeropad.ui-g-11.ui-lg-11.ui-md-11.ui-sm-8 > main > app-cases > app-pending-detail > div.replyDiv > p-dialog > div > div.ui-dialog-content.ui-widget-content > div:nth-child(2) > div > button:nth-child(1) > span")).click();
 		driver.findElement(By.xpath("(//div[@class='ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only'])")).click();
 		Thread.sleep(3000);
-System.out.println("yes");
+			System.out.println("yes");
 		
 
 		

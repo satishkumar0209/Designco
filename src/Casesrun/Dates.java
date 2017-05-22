@@ -69,7 +69,7 @@ public class Dates
 			
 			driver.findElement(By.cssSelector("[placeholder='To']")).click();
 			driver.findElement(By.linkText("4")).click();
-			//driver.findElement(By.xpath("//a[@href='#']")).click();
+			
 					
 					
 		List<WebElement>rows=driver.findElements(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr)"));

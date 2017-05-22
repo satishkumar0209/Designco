@@ -83,5 +83,15 @@ public static WebElement Totim(WebDriver driver)
 	return driver.findElement(By.cssSelector("[placeholder='To]"));
 	
 }
+public static WebElement CHECKBOX(WebDriver driver)
+{
+	return driver.findElement(By.xpath("//a[@href='#']"));
+	
+}
+public static WebElement label(WebDriver driver)
+{
+	return driver.findElement(By.xpath("//*[@label='PENDING CASES']"));
+	
+}
 
 }

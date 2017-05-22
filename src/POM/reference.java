@@ -7,14 +7,34 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
 
 public class reference {
-
-	public static void main(String[] args) throws InterruptedException {
+public static WebDriver driver;
+	
+		@BeforeTest
+		@Parameters("browser")
+		public void setup(String browser){
+			if(browser.equals("")){
+				driver=new FirefoxDriver();
+			}
+			
+			else if(browser.equalsIgnoreCase("chrome"))
+			{
+				System.setProperty("webdriver.chrome.driver","/home/aj/Downloads/chromedriver"); 
+				WebDriver driver=new ChromeDriver();
+			}
+			
+		}
+		@Test
 		Map<String, Object> prefs = new HashMap<String, Object>();
 		
 		prefs.put("profile.default_content_setting_values.notifications", 2);  
@@ -23,22 +43,26 @@ public class reference {
 		
 		ChromeOptions options = new ChromeOptions();
 		options.setExperimentalOption("prefs", prefs);
-
-		System.setProperty("webdriver.chrome.driver","/home/aj/Downloads/chromedriver"); 
-		WebDriver driver=new ChromeDriver(options);
+		System.setProperty("webdriver.chrome.driver","/home/aj/Downloads/chromedriver");
+		 driver=new ChromeDriver();	
+		driver.get("http://designco.sia.co.in/");
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		driver.get("http://designco.sia.co.in/login");
-	
+		Thread.sleep(5000);
+		
+		
 		driver.findElement(By.cssSelector("[placeholder='Username']")).sendKeys("superadmin@gmail.com");
-		Scanner scan1 = new Scanner(System.in);
-		String input1 = scan1.nextLine();s
-
-	//driver.findElement(By.cssSelector("[placeholder='Password']")).sendKeys("password123");
+		driver.findElement(By.cssSelector("[placeholder='Password']")).sendKeys("password123");
 		driver.findElement(By.xpath(".//*[@type= 'submit']")).click();
 		
 		Thread.sleep(8000);
 		
+		driver.findElement(By.xpath("(//*[@class='ui-dropdown-trigger ui-state-default ui-corner-right'])")).click();
+		Thread.sleep(5000);
+		driver.findElement(By.xpath("(//*[@class='ui-dropdown-item ui-corner-all'])")).click();
+
+		
+		driver.findElement(By.xpath("//*[text()='Last 30 Days']")).click();
+		//driver.findElement(By.xpath("//*[@text()='Last 30 Days']")).click();
 		
 		driver.get("http://designco.sia.co.in/cases");
 		Thread.sleep(5000);

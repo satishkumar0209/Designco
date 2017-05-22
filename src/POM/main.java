@@ -7,14 +7,15 @@ package POM;
 	public class main {
 
 		
-		public static void main(String[] args) {
-			System.setProperty("webdriver.chrome.driver","/home/aj/Downloads/chromedriver");
-			WebDriver driver=new ChromeDriver();	
-			driver.get("http://designco.sia.co.in/");
-			driver.manage().window().maximize();
+		public static void main(String[] args) throws InterruptedException {
+			//public static WebDriver driver;
+			
+			
+			WebDriver driver = null;
 			
 			email page=new email(driver);
-		
+			
+			page.usermain("");
 			
 			page.validuser("");
 			

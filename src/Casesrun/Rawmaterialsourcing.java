@@ -67,7 +67,7 @@ public class Rawmaterialsourcing
 			Cases.ENERGYUSECHECKBOX(driver).click();
 			
 			
-			driver.findElement(By.xpath("//a[@href='#']")).click();
+			Homepagetable.CHECKBOX(driver).click();
 			
 			
 			List<WebElement>rows=driver.findElements(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr)"));

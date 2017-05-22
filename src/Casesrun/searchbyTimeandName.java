@@ -64,7 +64,13 @@ ATUTestRecorder recorder;
 		Homepagetable.FromTime(driver).sendKeys("1105");
 		Thread.sleep(2000);
 		
-		driver.findElement(By.xpath("/html/body/app-root/app-navbar/div[2]/div/div[2]/main/app-cases/app-cases-list/div/div[2]/div[2]/div/div[2]/div/p-datatable/div/div[2]/table/thead/tr/th[3]/div/div[2]/span/p-inputmask")).sendKeys("1105");
+		//driver.findElement(By.xpath("/html/body/app-root/app-navbar/div[2]/div/div[2]/main/app-cases/app-cases-list/div/div[2]/div[2]/div/div[2]/div/p-datatable/div/div[2]/table/thead/tr/th[3]/div/div[2]/span/p-inputmask")).sendKeys("1105");
+		//Homepagetable.FromTime(driver).click();
+		Thread.sleep(3000);
+		//Homepagetable.FromTime(driver).sendKeys(Keys.TAB);
+		Thread.sleep(3000);
+		
+		driver.findElement(By.xpath("(//input[@class='ui-inputtext ui-corner-all ui-state-default ui-widget ui-state-filled'])[2]")).sendKeys("1134");
 		//Homepagetable.FromTime(driver).sendKeys(Keys.TAB);
 		//Homepagetable.Totime(driver).sendKeys("1105");
 		

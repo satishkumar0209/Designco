@@ -1,8 +1,16 @@
 package Loginrun;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
+import com.beust.jcommander.Parameter;
 
 import POM.Login;
 import atu.testrecorder.ATUTestRecorder;
@@ -11,15 +19,29 @@ import junit.framework.Assert;
 
 public class Invaliduser {
 private static WebDriver driver;
-	
-	ATUTestRecorder recorder;
+ATUTestRecorder recorder;
 	@Test
-	public void user() throws InterruptedException, ATUTestRecorderException
+	@Parameters("browser")
+	public void setup(String browser) throws Exception
 	{
-		System.setProperty("webdriver.chrome.driver","/home/aj/Downloads/chromedriver"); 
-		recorder = new ATUTestRecorder("/home/aj/Documents/Selenium recording videos","Invalid user-",false);
-		recorder.start();
-		WebDriver driver=new ChromeDriver();
+		if(browser.equalsIgnoreCase("firefox")){
+			System.setProperty("webdriver.firefox.marionette", "/home/aj/Downloads/geckodriver");
+			driver = new FirefoxDriver();
+		}
+		
+		else if(browser.equalsIgnoreCase("chrome")){
+			
+			System.setProperty("webdriver.chrome.driver","/home/aj/Downloads/chromedriver"); 
+			WebDriver driver=new ChromeDriver();
+		}
+		
+		else
+		{
+			
+			throw new Exception("Browser is not correct");
+		}
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);	
+		
 		driver.get("http://designco.sia.co.in/");
 		driver.manage().window().maximize();
 		

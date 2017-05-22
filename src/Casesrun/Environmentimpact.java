@@ -64,8 +64,8 @@ ATUTestRecorder recorder;
 		
 		Cases.ENERGYUSECHECKBOX(driver).click();
 		
+		Homepagetable.CHECKBOX(driver).click();
 		
-		driver.findElement(By.xpath("//a[@href='#']")).click();
 		
 		
 		List<WebElement>rows=driver.findElements(By.xpath("(//tbody[@class='ui-datatable-data ui-widget-content']/tr)"));
